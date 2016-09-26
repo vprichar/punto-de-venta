@@ -1,0 +1,33 @@
+  <div class="card">
+    <div class="table-responsive">
+      <table >
+        <thead>
+          <tr>
+            <th>ID </th>
+             <th>Nombre </th> 
+              <th>Correo </th> 
+              <th> Telefono</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id%></td>
+              <td><%= customer.first_name %></td>
+               <td><%= customer.email_address %></td> 
+                <td><%= customer.phone_number %></td> 
+
+              
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="panel-body">
+        <%= will_paginate @customers, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+</div>
+

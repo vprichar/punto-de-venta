@@ -1,0 +1,46 @@
+<nav>
+    <div class="nav-wrapper">
+      <a class="brand-logo">  Estilistas Shop</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+         <li><a href="/customers">Clientes</a></li>
+
+
+        <li class="dropdown">
+          <a lass="dropdown-toggle" data-toggle="dropdown" href="#">Ventas</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/sales">Ventas</a>
+              <a href="/histosale">Historial</a>
+            </li>
+          </ul>
+        </li>
+
+      
+
+         <li class="dropdown">
+          <a lass="dropdown-toggle" data-toggle="dropdown" href="#">Corte de Caja</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/cash_outs">Corte de Caja</a>
+              <a href="/histcotes">Historial</a>
+            </li>
+          </ul>
+        </li>
+
+
+         <li><%= link_to 'Venta Nueva', new_sale_path, :class => "waves-effect waves-light btn-large" , id: 'someId' %></li>
+        <li>
+          <%= link_to(destroy_user_session_path, :method => :delete) do %>
+             <i class="material-icons">https</i>
+          <% end %>
+        </li>
+       
+      </ul>
+     
+    </div>
+  </nav>
+   
+
+
+

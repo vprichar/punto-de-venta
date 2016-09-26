@@ -1,0 +1,5 @@
+<h2>Buscar: <%= params[:search][:employee] %></h2>
+
+<% for employee in @employees %>
+	<%= employee.name %><br />
+<% end %>

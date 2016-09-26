@@ -1,0 +1,49 @@
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="card">
+  <div class="table-responsive">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Empleado</th>
+          <th>Total efectivo</th>
+          <th>Numero de ventas</th>
+          <th>Pagado</th>
+
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+       <% @histcotesController.each do |cortes| %>
+
+     
+          <tr>
+            <td><%= cortes.id%></td>
+            <td><%= User.find(cortes.user.id).username%></td>
+              <td><%= cortes.total_price%></td>
+
+            <td><%= cortes.total_sales%></td>
+            <td><%= link_to 'Mostrar', histcote_path(cortes) , :class =>"waves-effect waves-light btn"%> </td>
+            <td></td>
+ 
+          </tr>
+
+         <%end %> 
+      </tbody>
+    </table>
+         
+
+
+  </div>
+
+</div>
+
+ <div class="panel-body">
+
+      </div>
+
+

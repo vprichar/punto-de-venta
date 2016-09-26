@@ -1,0 +1,13 @@
+
+
+
+
+Sale.find(:all, :conditions => {:created_at => repo.initial_date.beginning_of_day..repo.final_date.end_of_day})
+
+
+entas = Sale.find(:all,:conditions => [ " created_at between ? and ? ",repo.initial_date,repo.final_date ])
+
+
+
+
+Sale.where(:created_at => (repo.initial_date.beginning_of_day..repo.final_date.end_of_day))

@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @retails.each do |retail| %>
+            
+              <td><%= retail.name %></td>
+              <td><%= retail.phone %></td>
+              <td><%= retail.address %></td>
+              <td><%= link_to 'Mostrar', edit_retail_path(retail) %> | <%= link_to 'Destruir', retail, method: :delete, data: { confirm: '¿Seguro?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="panel-body">
+        <%= will_paginate @retails, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="col-sm-12">
+      <%= link_to 'Nueva Sucursal', new_retail_path, :class => "btn btn-success btn-lg active" %>
+    </div>

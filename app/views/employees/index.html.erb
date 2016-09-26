@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            
+            <th>Nombre</th>
+            <th>RFC</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @employees.each do |employee| %>
+            
+              <td><%= employee.name %></td>
+              <td><%= employee.rfc %></td>
+              <td><%= employee.address %></td>
+              <td><%= employee.phone %></td>
+              <td><%= employee.email %></td>
+              <td><%= link_to 'Mostrar', edit_employee_path(employee) %> | <%= link_to 'Destruir', employee, method: :delete, data: { confirm: '¿Seguro?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="panel-body">
+        <%= will_paginate @employees, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="col-sm-12">
+      <%= link_to 'Nuevo Empleado', new_employee_path, :class => "btn btn-success btn-lg active" %>
+    </div>

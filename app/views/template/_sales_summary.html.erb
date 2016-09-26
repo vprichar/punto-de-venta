@@ -1,0 +1,5 @@
+<div class="panel-body">
+	Ventas: <%= number_to_currency raw_sales %><br />
+	Pagadas: <%= number_to_currency payment_total %><br />
+    <%= owed_balance >= 0 ? "Adeudos: " : "Adeudo: " %><%= number_to_currency(owed_balance) %>
+</div>

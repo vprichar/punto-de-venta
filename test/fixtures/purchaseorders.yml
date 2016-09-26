@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: MyString
+  store_configuration_id: MyString
+  user_id: MyString
+  committed: MyString
+  stock_id: MyString
+
+two:
+  item_id: MyString
+  store_configuration_id: MyString
+  user_id: MyString
+  committed: MyString
+  stock_id: MyString

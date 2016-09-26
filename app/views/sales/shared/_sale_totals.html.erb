@@ -1,0 +1,30 @@
+<!--<label>Impuesto(<%= @configurations.tax_rate.blank? ? 'no configurado' : @configurations.tax_rate %>)</label>
+<div class="input-group">
+  <span class="input-group-addon">$</span>
+  <input type="text" class="form-control" readonly value=<%= number_to_currency(@sale.tax, unit: '') %>>
+</div>
+<hr />-->
+
+	<div style="font-size:2em">		
+  <% if @sale.discount && @sale.discount > 0 %>
+     <span style="text-decoration:line-through;" ><%= number_to_currency @sale.amount %></span> | 
+    -<%= (@sale.discount * 100).to_i %>% | 
+    <%end %>
+    <label class="text-success">Total</label>: <%= number_to_currency @sale.remaining_balance %>
+  </span>
+  </div>
+
+            <label>Descuento</label>
+            <div class="input-group">
+              <select id="sale_discount" class="form-control sale-discount">
+                <% 0.step(50, 5) do |disc| %>
+                  <% dec_discount = (disc.to_d / 100).to_s %>
+                  <option value="<%= dec_discount %>" 
+                      <%= @sale.discount.to_s == dec_discount ? "selected" : nil %>>
+                      <%= disc.to_s + "%" %>
+                  </option>
+                <% end %>
+              </select>
+              <span class="input-group-addon">$<%= @sale.discount.blank? ? 0 : number_to_currency(@sale.get_discounted_amount, unit: '') %></span>
+            </div>
+

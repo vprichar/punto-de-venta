@@ -1,0 +1,5 @@
+<h2>Buscar: <%= params[:search][:name] %></h2>
+
+<% for retail in @retails %>
+	<%= retail.name %><br />
+<% end %>

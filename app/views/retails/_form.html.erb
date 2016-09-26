@@ -1,0 +1,42 @@
+<%= form_for(@retail) do |f| %>
+  <%= render :partial => 'template/form_errors', :object => @retail %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+
+    
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Nombre</label>
+          <%= f.text_field :name, :class => "form-control", :placeholder => "Nombre" %>
+        </div>
+      </div>
+    
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Teléfono</label>
+          <%= f.text_field :phone, :class => "form-control", :placeholder => "Teléfono" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Direccion</label>
+          <%= f.text_field :address, :class => "form-control", :placeholder => " " %>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    
+  
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= f.submit 'Agregar Sucursal', :class => "btn btn-success btn-lg" %>
+  </div>
+</div>
+<% end %>

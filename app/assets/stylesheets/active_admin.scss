@@ -1,0 +1,87 @@
+// SASS variable overrides must be declared before loading up Active Admin's styles.
+//
+// To view the variables that Active Admin provides, take a look at
+// `app/assets/stylesheets/active_admin/mixins/_variables.css.scss` in the
+// Active Admin source.
+//
+// For example, to change the sidebar width:
+// $sidebar-width: 242px;
+
+// Active Admin's got SASS!
+@import "active_admin/mixins";
+@import "active_admin/base";
+@import "active_skin";
+@import "active_admin/translate";
+
+
+// Overriding any non-variable SASS must be done after the fact.
+// For example, to change the default status-tag color:
+//
+//   .status_tag { background: #6090DB; }
+
+
+
+thead th{
+background:white !important;
+
+
+
+	
+}
+
+
+$skinLogo: url("/assets/active_skin/logo.png") no-repeat 0 0;
+
+
+#header h1.site_title{
+	    display: none;
+}
+
+#active_admin_content a.table_tools_button, #active_admin_content .table_tools .dropdown_menu_button{
+	display: block;
+    
+
+}
+
+
+
+
+
+#header ul.tabs > li:hover > a, #header ul.tabs > li.current > a{
+background: #FF0041;
+	
+}
+
+#title_bar{
+	border-bottom: 4px solid #FF0041;
+}
+
+
+#title_bar .action_items a > a, #title_bar .action_items a > .dropdown_menu > a, #title_bar .action_items span.action_item > a, #title_bar .action_items span.action_item > .dropdown_menu > a{
+	
+	    background: #FF0041;
+}
+
+
+
+form input[type=submit], a.button, a:link.button, a:visited.button{
+	    background: #FF0041;
+}
+
+
+    
+
+
+    .download_links{
+    a:-webkit-any-link {
+      box-shadow: none;
+    border-radius: 0;
+    background: #FF0041;
+    color: white;
+    border: none;
+    text-shadow: none;
+    padding: 11px 20px;
+    text-decoration:none;
+    }
+
+    }

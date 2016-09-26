@@ -1,0 +1,46 @@
+
+<div class="center">
+      <div class="card bordered z-depth-2" style="margin:0% auto; max-width:400px;">
+        <div class="card-header">
+           <i class="material-icons medium white-text"></i>
+         <%= form_for("user", :url => user_session_path, :html => { :role => "form" }) do |f| %>
+        </div>
+         <div class="card-content">
+        
+          <form>
+            <div class="input-field col s12">
+               <%= f.text_field :username, :class => 'validate' %>
+              <label class="active" for="username">Nombre de usuario</label>
+            </div>
+            <div class="input-field col s12">
+	           <%= f.password_field :password, :class => 'validate'  %>
+              <label class="active"for="password">Contraseña</label>
+            </div>
+            <br>
+
+
+              	<button class="waves-effect waves-light btn" style="height: 100%;width: 100%;" value="Sign in" type="submit">iniciar sesion</button>
+
+           
+             
+         <% end %>
+        </div>
+        <div class="card-action clearfix">
+          <div class="row">
+            <div class="col s6 text-p">
+              <a href="/users/password/new" class="orange-text tooltipped" data-position="top" data-delay="50" data-tooltip="piede una nueva">perdiste tu contraseña </a>
+            </div>
+            <div class="col s6 right-align text-p">
+              <a href="#" class="orange-text tooltipped" data-position="top" data-delay="50" data-tooltip="llama ">llama </a>
+            </div>
+
+          </div>
+            <p class="copyright">Copyright &copy; <%= Time.now.year %> Estilistas</p>
+
+        </div>
+          
+
+      </div>
+    </div>
+
+

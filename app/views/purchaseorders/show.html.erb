@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    Informacion  de compra 
+  </a>
+  <a  class="list-group-item"> Nombre: <%=  @purchaseorders.store_configuration.store_name%></a>
+  <a  class="list-group-item"> Usuario:  <%=  @purchaseorders.user.username %></a>
+  <a  class="list-group-item">
+     <% if @purchaseorders.committed %>
+           <td class="success">
+          <%= "NO Entregado"; %>
+
+          <% else %>
+              <td class="danger">
+         <%= "Entregado"; %>
+       
+          <% end %>
+
+
+  </a>
+  <a  class="list-group-item">Fecha de pedido: <%=  @purchaseorders.created_at.strftime("%d %b. %Y")%> </a>
+</div>
+
+
+
+
+
+<p>
+
+  <% @items.each do |tag| %>
+  <div>
+    <%= tag.name %> <br>
+  </div>
+<% end %>
+</p>  
+
+<%= link_to 'Edit', edit_purchaseorder_path(@purchaseorders) %> |
+<%= link_to 'Back', purchaseorders_path %>

@@ -1,0 +1,156 @@
+<!-- Modal -->
+  <div class="modal fade" id="makePayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  >
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Opciones de Pago</h4>
+        </div>
+        <div style="margin:0 15px 0 15px">
+            <div class="sale_totals hidden-print">
+              <%= render :partial => 'sales/shared/sale_totals', :object => @sale %>
+            </div>
+        </div>      
+        <div class="modal-body">
+          <%= render :partial => 'sales/shared/payment' %>
+        </div>        
+        <div style="margin:0 15px 0 15px">
+          <%= render :partial => 'sales/shared/comments', :object => @sale %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+     <div class="modal fade" id="Descuento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button"  data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Descuento</h4>
+        </div>
+        <div style="margin:0 15px 0 15px">
+
+ 
+       
+
+            <div style="margin:0 15px 0 15px">
+          <%= render :partial => 'sales/shared/comments', :object => @sale %>
+        </div>
+           
+           
+       
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="clientes " tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">probador de precios</h4>
+        </div>
+             <%= render :partial => 'sales/shared/searched_items' %> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="salir" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="customItemsd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">probador de precios</h4>
+        </div>
+        <div class="modal-body">
+
+           <%= form_for :loco, :url => url_for(:controller => "sales", :action => "search", :format => :js), :method => "get", :remote => true do |f| %>
+     
+        <%= f.text_field :sku, :id => "sku " ,:class => "form-control item_loco_input input", :placeholder => "sku"  %>
+        <% end %>
+           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<!-- Modal -->
+  <div class="modal fade" id="customCustomers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" id="mdialTamanio">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Buscamos articulos </h4>
+        </div>
+
+       
+       
+        <div class="modal-body">
+         
+         <%= form_for :search, :url => url_for(:controller => "sales", :action => "uno", :format => :js), :method => "get", :remote => true do |f| %>
+      <div class="form-group">
+            <%= f.text_field :item_name, :id => "mama" ,:class => "form-control item_search_input input", :placeholder => "Articulo"  %>
+
+    
+   
+       <div id="myAnchor" >
+
+       </div  >
+
+       <div style="display: none;">
+        <%= f.collection_select :item_category, ItemCategory.all, :id, :name, {prompt: "Select a category"}, {class: "form-control item_category_search_input"}  %>
+        </div>
+
+      </div>
+
+
+        <p>
+   
+        </p>
+
+
+      <%= f.hidden_field :sale_id, :value => @sale.id %>
+
+
+      <%= submit_tag "search", :class => "btn btn-primary btn-lg item_search" %>
+
+
+    <% end %>
+
+
+          
+
+       
+           <div class="searched_items">
+              <% render :partial => 'sales/shared/searched_items' %> 
+            </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

@@ -1,0 +1,85 @@
+
+<table class="striped" >
+        <thead>
+          <tr>
+              <th data-field="id">Código</th>
+              <th data-field="name">Artículo</th>
+              <th data-field="price">Precio</th>
+              <th data-field="Cantida">Cantida</th>
+              <th data-field="Total">Total</th>
+              <th data-field="Menos"></th>
+              <th data-field="Descuento">Descuento</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+      <%items =  @sale.line_items%>
+      <div class="numeroItem"  style="display: none;"><%=items.count%></div>
+      <% items = items.reorder('created_at  DESC')%>
+      <% items.each do |e| %>   
+          <%@tem =Item.find_by(:id => e.item_id )%>
+            
+               <% @tex =@tem.name.to_s+"  "+@tem.description.to_s%>
+          <tr>
+            <td><%= @tem.sku %></td>
+            <td><p><%= @tex %> </p></td>
+            <td>$<%=@tem.price %></td>
+            <td>
+               <div class="adjust hidden-print">
+              <%= e.quantity %> 
+                <%= link_to url_for(:controller => 'sales', :action => 'suma', :item_id => @tem.id, :sale_id => @sale.id), :remote => true do %>
+                  <span >  <i class="material-icons" style=" color: black;">add</i></span>
+                <% end %>
+              </div>
+
+
+
+            </td>
+            <td><p>
+              <%if e.discount == nil%>
+          <%= number_to_currency(e.total_price) %>
+             <%= e.discount %> 
+              <%else%> 
+            <strike>  <%= number_to_currency(e.price) %> </strike> | <%= e.discount*100 %> % | <%= number_to_currency(e.total_price)  %>
+              <%end %>
+             </p></td>
+
+            <td><p>
+            <%= link_to url_for(:controller => 'sales', :action => 'add_item',  :item_id => @tem.id, :sale_id => @sale.id), :remote => true do %>
+                <span class="chip"> - </span>
+                <% end %>
+                </p></td>
+            <td id = "descuento" style=" width: 100px;">
+  <div class="btn-group" role="group" id = "descuentos"  >
+    <button type="button"  class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="
+    font-size: 15px;
+"  id = "<%=  @employes_re %>" >
+   Descuento
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+       <% 0.step(100, 10) do |disc| %>
+                  <% dec_discount = (disc.to_d / 100).to_s %>
+      <li>
+ <%= link_to url_for(:controller => 'sales' ,:action => 'descuento',  :item_id => @tem.id, :sale_id => @sale.id, :discount => dec_discount),id: "an-id", :remote => true do %>
+                <span > <%= disc.to_s + "%" %> </span>
+                <% end %>
+      </li>
+      <% end %>
+
+    </ul>
+  </div>
+</div>
+            </td>
+          </tr>
+          
+         <%end %>
+        </tbody>
+      </table>
+
+
+
+
+
+

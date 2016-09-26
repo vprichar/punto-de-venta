@@ -1,0 +1,35 @@
+<div class="comments">
+   <h4 class="text-primary"><span class="glyphicon glyphicon-book"></span> Comentarios</h4>
+   <%= form_for :sale_comments, :url => url_for(:controller => "sales", :action => "add_comment", :sale_id => @sale.id, :format => :js), :method => "get", :remote => true do |f| %>
+   <div class="form-group">
+      <%= f.text_area :comments, :class => "form-control", :placeholder => "Comentarios", :value => @sale.comments %>
+      <%# f.collection_select :employee , Employee.all, :id, :name, {prompt: "Empleado"}, {class: "form-control" } 
+         <%= f.collection_select :customer_id , Customer.all, :id, :first_name, {prompt: "Clientes"}, {class: "form-control" }  %>
+      <div  class="cliente" > 
+         <% if !@sale.employee = nil%> 
+         cliente:  
+         <%else %> 
+         cliente: <%=@sale.employee.name%>   
+         <%end %>
+         <%= text_field_tag :name, nil, class: 'awesomplete',:id => "complete", data: { list: @customer} %>
+      </div>
+      <div  class="empleado" >    
+         <% if !@sale.customer = nil%> 
+         Empleado: 
+         <%else %> 
+         Empleado:   <%=@sale.customer.first_name %>      
+         <%end %> 
+         <%= text_field_tag :employee, nil, class: 'awesomplete',:id => "complete1", data: { list:  @employes} %>
+      </div>
+      <br>
+ 
+   <div> <%= f.date_select :start_date,:use_month_numbers => true ,:class => 'form-control', :value =>@sale.created_at,:id => "data" %>
+
+            <%= submit_tag "Buscar", :class => "btn btn-primary btn-lg sale_comments" %>
+   </div>
+         
+        
+   <% end %>
+   </div>
+</div>
+

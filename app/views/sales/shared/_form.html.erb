@@ -1,0 +1,35 @@
+<div class="card" id="puntoDeVenta" ng-controller="SalesCtrl"   >
+  <div class="panel-heading">#<span class="sale_id"><%= @sale.id %>, Creada: <%= @sale.created_at.strftime("%m/%d/%y %I:%M:%S %p")  %>, Ultima edición: <%= @sale.updated_at.strftime("%m/%d/%y %I:%M:%S %p")  %></span></div> 
+  <span class="sale_id" >
+    <div class="panel-body" style="
+    max-height: 540px;
+    overflow-y:auto;" >
+      
+
+          <%= render :partial => 'sales/shared/sale_tab' %>       
+        
+
+          <%= render :partial => 'sales/shared/modals' %>
+
+      
+  </div>
+    <div class="panel-bottom">
+
+      <div class="panel-left">
+               <input type="text" value="<%= @sale.id %>" id="sale_id" hidden>
+
+         <form ng-submit="function()">
+       <input type="text" ng-model="barcodesearch" id="barcodesearch" autofocus/>
+    </form>
+
+      </div>
+      <%= form_for(@sale) do |f| %>
+
+      <div class="panel-right sale_payments">
+         <%= render :partial => 'sales/shared/sale_payments', :locals => {:f => f} %>
+        </div> 
+      </div>
+      <%end%>
+    </div>
+
+</div>

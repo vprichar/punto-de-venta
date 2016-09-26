@@ -1,0 +1,62 @@
+<%= render :partial => 'template/dashboard_menu' %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Recent Sales</div>
+  <div class="table-responsive">
+	  <table class="table table-striped table-bordered table-hover">
+	  	<tr>
+	  		<th>#</th>
+        <th>Creado</th>
+        <th>Cliente</th>
+        <th>Total</th>
+        <th>Impuesto</th>
+        <th>Pagado</th>
+        <th>Balanceeee</th>
+        <th></th>
+	  	</tr>
+	  	    <% for ds in @recent_sales %>
+        <tr class="<%= ds.remaining_balance == 0.00 && !ds.total_amount.blank? ? 'success' : '' %>">
+          <td><%= ds.id %></td>
+          <td><%= ds.created_at.strftime("%m/%d/%y %I:%M:%S %p")  %></td>
+          <td><%= ds.customer.blank? ? '-' : ds.customer.last_name %></td>
+          <td><%= number_to_currency ds.total_amount %></td>
+          <td><%= number_to_currency ds.tax %></td>
+          <td><%= number_to_currency  ds.paid_total %></td>
+          <td><%= ds.remaining_balance == 0.00 && ds.payments.count > 0 ? "Paid" : "#{number_to_currency ds.remaining_balance}" %></td>
+          <td><%= link_to 'Show', edit_sale_path(ds) %> |  
+           <%= link_to 'Destroy', ds, method: :delete, data: { confirm: 'Are you sure?' } %> 
+          |<%= link_to 'Duplicar', ds, method: :dup, data: { confirm: 'esta seguro que  quiere duplicar el ecampo' } %> 
+
+
+
+          </td>
+        </tr>
+      <% end %>
+	  </table>
+	</div>
+</div>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Articulos Populares</div>
+
+  <div class="panel-body">
+    <% for item in @popular_items %>
+      <%= link_to create_sale_with_product_dashboard_index_path(:item_id => item.id, :quantity => 1) do %>
+        <button type="button" class="btn btn-default">
+          <%= item.name %>
+        </button>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
+
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Resumen</div>
+
+  <!-- Table -->
+  <%= render :partial => 'template/sales_summary' %>
+</div>

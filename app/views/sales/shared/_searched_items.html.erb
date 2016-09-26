@@ -1,0 +1,54 @@
+<h4 class="text-primary"><span class="glyphicon glyphicon-tags"></span> Articulos Encontrados</h4>
+<hr />
+
+
+ <div class="cart">
+  <table  id="searched_items"> 
+  <thead>
+      <tr>
+        <th class="we"  >sku</th>
+        <th  class="article" >Artículo</th>
+
+        <th>Precio</th>
+        <th>Agregar</th>
+      
+      </tr>
+    </thead>
+
+    <tbody>
+      <% unless @available_items.blank? %>
+      
+       <% contador =0 %>
+      	<% for item in  @available_items %>
+         <%tem =Item.find_by(:id => item .id )%>
+
+               <% @tex = tem.name.to_s+ "  " +tem.description.to_s %>
+          <tr>
+          
+            <td  class="we" ><p>                    <%= item.sku %></p></td>
+
+            <td class="article"  ><p><%= @tex %> </p></td>
+       
+            <td><p><%= number_to_currency(item.price) %></p></td>
+
+            <td >
+              <p>
+              
+                 
+              <%= link_to url_for(:controller => 'sales', :action => 'create_line_item', :item_id => item.sku, :sale_id => @sale.id, :quantity => 1), :remote => true do %> <span >  <button type="button" class = "menosbot"  data-dismiss="modal" id = "<%=contador.to_s+"add"%>" >+</button>   </span><% end %>
+
+           <% contador = contador +1 %>
+                    
+               </div>
+             </p>
+            </td>
+             
+
+
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

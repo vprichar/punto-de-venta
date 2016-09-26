@@ -1,0 +1,65 @@
+<div class="card">
+  <div class="table-responsive">
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Creado</th>
+          <th>Empleado</th>
+          <th>Total</th>
+          <th>Pagado</th>
+          <th>Balance</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <%items =  @sales%>
+      <% items = items.reorder('created_at  ASC')%>
+
+        <%  items.each do |sale| %>
+          <tr class="<%= sale.remaining_balance == 0.00 && !sale.total_amount.blank? ? 'success' : '' %>">
+            <td><%= sale.id %></td>
+            <td><%= sale.created_at.strftime("%m/%d/%y %I:%M:%S %p")  %></td>
+              <td><%= sale.employee.blank? ? 'no ' :   sale.employee.name %></td>
+
+            <td><%= number_to_currency sale.total_amount %></td>
+            <td><%= number_to_currency sale.paid_total %></td>
+            <td><%= sale.remaining_balance == 0.00 && sale.payments.count > 0 ? "Pagado" : "#{number_to_currency sale.remaining_balance}" %></td>
+            <td>
+              <% if (sale.remaining_balance == 0.00 && sale.total_amount= 00 ) %> 
+              <%= link_to 'Mostrar', sale_path(sale) , :class =>"waves-effect waves-light btn"%> 
+             
+              <%else  %> 
+               <%= link_to 'Pagar', edit_sale_path(sale) , :class =>"waves-effect waves-light btn"%> 
+          
+              <%end  %> 
+
+
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+         
+    <div class="panel-body">
+      </div>
+
+  </div>
+
+</div>
+
+
+<!--<div class="panel panel-default" >-->
+  <!-- Default panel contents 
+  <div class="panel-heading">Resumen</div>
+
+  <!-- Table -->
+  <% render :partial => 'template/sales_summary' %>
+
+<!--</div>-->
+
+
+<br>
+
+

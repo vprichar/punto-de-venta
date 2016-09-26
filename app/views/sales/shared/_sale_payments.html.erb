@@ -1,0 +1,23 @@
+<% if @sale.remaining_balance <= 0.00 && @sale.payments.count > 0 %>
+  <span class="alert alert-success hidden-print">Pago Completado: $<%= number_to_currency(@sale.total_amount, unit: '') %></span>
+  <span class="alert alert-warning hidden-print">Cambio: <%= number_to_currency @sale.change_due %></span>
+<% else %>
+
+  <span class="total_price">
+  <% if @sale.discount && @sale.discount > 0 %>
+    <span style="text-decoration:line-through;" ><%= number_to_currency @sale.amount %></span> | 
+    -<%= (@sale.discount * 100).to_i %>% | 
+    <%end %>
+    <%= number_to_currency @sale.remaining_balance %>
+  </span>
+
+
+  <% unless @sale.total_amount.blank? %>
+    <!-- Button trigger modal -->
+    <div class = "float" style="text-align: right;">
+    <button class="btn-floating btn-large waves-effect waves-light red" data-toggle="modal" data-target="#makePayment">
+     +
+    </button>  
+    </div>
+  <% end %>
+<% end %>

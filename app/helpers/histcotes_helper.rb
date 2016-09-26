@@ -1,0 +1,2 @@
+module HistcotesHelper
+end

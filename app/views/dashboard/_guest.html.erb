@@ -1,0 +1,15 @@
+<div class="container">
+  
+  <%= form_for("user", :url => user_session_path, :html => { :class => "form-signin" }) do |f| %>
+  	<h2 class="form-signin-heading"><a target="_blank" >Estilista's Shop</a></h2>
+      <%= f.text_field :email, :class => 'form-control', :placeholder => 'Correo' %>
+      <%= f.password_field :password, :class => 'form-control', :placeholder => 'Contraseña' %>
+      <label class="checkbox">
+      	<%= f.check_box :remember_me %> Recuerdame
+      </label>
+      <%= link_to "Forgot your password?", new_password_path('user') %>
+      <button class="btn btn-lg btn-primary btn-block" value="Sign in" type="submit">Iniciar Sesion</button>
+      <p class="copyright">Copyright &copy; 2014 Estilista's Shop</p>
+    <% end %>
+
+</div>

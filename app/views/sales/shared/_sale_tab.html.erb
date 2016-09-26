@@ -1,0 +1,83 @@
+<%= form_for(@sale) do |f| %>
+  <%= render :partial => 'template/form_errors', :object => @sale %>
+
+  
+  <hr class="hidden-print" />
+  <div class="added_items">
+    <%= render :partial => 'sales/shared/added_items', :locals=>{:f=>f} %>
+  </div>
+
+  <div class="row">
+    
+  
+  </div>
+  <%= f.submit 'Update Sale', :class => "btn btn-success btn-lg sale_submit" %>
+<% end %>
+<div class="row item_search_wrapper hidden-print">
+  <div class="col-sm-4" >
+    <h4 class="text-primary"><span class="glyphicon glyphicon-search"></span> Buscar</h4>
+    <hr />
+
+    <script type="text/javascript">
+
+    function PrintElem(elem)
+    {
+        Popup($(elem).html());
+    }
+
+    function Popup(data) 
+    {
+        var mywindow = window.open('', 'my div', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>my div</title>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+
+</script>
+</head>
+
+
+<div id="mydiv">
+<pre>
+ ___ __ ___ _ _   _ __ ___ _  __ __ _ _  _  ___ 
+| __/ _|_ _| | | | / _|_ _/ \/ _/ _| U |/ \| o \
+| _|\_ \| || | |_| \_ \| | o \_ \_ \   ( o )  _/
+|___|__/|_||_|___|_|__/|_|_n_|__/__/_n_|\_/|_|                                                                                                             
+                                                         
+          PASEO DE SAN ISIDRO
+Paseo Los Ganaderos (LasTorres) # 1787 Pte.
+Fracc. Lomas de San Isidro C.P: 80197, 
+Culiacán, Sinaloa
+R.F.C.AISJ681228-T68 CURP:AISJ68122MSLVNDO5
+Fecha: <%= @sale.created_at %>
+Folio: <%= @sale.id %>
+Cajero <%= current_user.username %>
+__________________________________________
+#Nombre        cantidad  costo   Total<%= fields_for @sale do |f|%><%= f.fields_for :items do |e| %><% @line_item = LineItem.where(:sale_id => @sale.id, :item_id => e.object.id).first %>
+<%= i = Item.find (@line_item.item_id) 
+i.nombrecom %>   #<%= @line_item.quantity %>  <%= number_to_currency(@line_item.price) %>  <%= number_to_currency(@line_item.total_price) %>  <%if @line_item.discount != nil%>*<%end %><% end %><% end %>                 
+____________________________________________ <% if  @sale.discount != nil %>Descuento:<%= number_to_currency(@sale.get_discounted_amount) %><%end%>   
+                       Impuesto:<%= number_to_currency(@sale.tax) %>
+                       Total:<%= number_to_currency(@sale.total_amount) %>
+                       Cambio:<%= number_to_currency @sale.change_due %>  
+                       T.Productos:<%= @sale.line_items.count%>  
+Estimado cliente por favor revise susproductos ,
+salida de mercancía no seaceptan cambios ni 
+devoluciones.en caso de existir defecto de 
+fabrica, únicamente operara el cambio por
+algúnproducto de la misma marcaen ningún
+momentose realizara ladevolución de efectivo
+______________________________________________
+<% unless @sale.employee.blank? %> vendedora: <%= @sale.employee.name %> <% end %>
+Lo atendio: <%= @sale.customer%>
+  </pre></div>
+</div>
+ </div>
+
+

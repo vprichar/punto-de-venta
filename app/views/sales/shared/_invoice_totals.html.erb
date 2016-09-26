@@ -1,0 +1,26 @@
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <td>Precio Base: </td>
+      <td><%= number_to_currency(@sale.amount) %></td>
+    </tr>
+    <% unless @sale.discount.blank? %>
+      <tr>
+        <td>Descuento: </td>
+        <td><%= number_to_currency(@sale.get_discounted_amount) %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>Impuesto: </td>
+      <td><%= number_to_currency(@sale.tax) %></td>
+    </tr>
+    <tr>
+      <td>Total: </td>
+      <td><%= number_to_currency(@sale.amount) %></td>
+    </tr>
+    <tr>
+      <td>Balance: </td>
+      <td><%= number_to_currency(@sale.total_amount) %></td>
+    </tr>
+  </tbody>
+</table>

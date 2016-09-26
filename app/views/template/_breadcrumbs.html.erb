@@ -1,0 +1,18 @@
+
+<div class="pos_wrapper">
+<nav>
+    <div class="nav-wrapper">
+      <div class="col s12">
+      <strong><%= Date.today.to_s(:long) %></strong> - 
+			<%= current_user.store_configuration.blank? ? "Punto de Venta" : 
+
+
+			"Nombre de la tienda: "+current_user.store_configuration.name.to_s + ",     Bienvenido:  "+current_user.username    %>
+		</div>
+      </div>
+    </div>
+  </nav>
+  </div>
+  <BR>
+
+</div>

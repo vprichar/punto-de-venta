@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Detalle del Cliente</div>
+  <div class="panel-body">
+  <%= form_for(@customer) do |f| %>
+    <%= render :partial => 'template/form_errors', :object => @customer %>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <label>Nombre</label>
+          <%= f.text_field :first_name, :class => "form-control", :placeholder => " Nombre" %>
+        </div>
+        <div class="col-sm-6">
+            <label>Dirección</label>
+            <%= f.text_field :address, :class => "form-control", :placeholder => "Dirección" %>
+          </div>
+        <!-- <div class="col-sm-6">
+          <label>Last Name</label>
+          <%= f.text_field :last_name, :class => "form-control", :placeholder => "Last Name" %>
+        </div> -->
+      </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <label>Teléfono</label>
+            <%= f.text_field :phone_number, :class => "form-control", :placeholder => "Phone Number" %>
+          </div>
+          <div class="col-sm-6">
+            <label>Curp</label>
+            <%= f.text_field :zip, :class => "form-control", :placeholder => "Curp" %>
+          </div>
+          <div class="col-sm-6">
+            <label>Correo</label>
+            <%= f.text_field :email_address, :class => "form-control", :id =>  "exampleInputEmail1", :placeholder => "Correo" %>
+          </div>
+        </div>
+        <div class="row">
+          <!--<div class="col-sm-6">
+            <label>Dirección</label>
+            <%= f.text_field :address, :class => "form-control", :placeholder => "Dirección" %>
+          </div>
+           <div class="col-sm-6">
+            <label>City</label>
+            <%= f.text_field :city, :class => "form-control", :placeholder => "City" %>
+          </div>
+        </div> -->
+        <div class="row">
+          <!-- <div class="col-sm-6">
+            <label>State</label>
+            <%= f.text_field :state, :class => "form-control", :placeholder => "State" %>
+          </div> 
+          <div class="col-sm-6">
+            <label>Curp</label>
+            <%= f.text_field :zip, :class => "form-control", :placeholder => "Curp" %>
+          </div>
+        </div>-->
+        <div class="row">
+          <div class="col-sm-12">
+            <%= f.submit 'Crear Cliente', :class => "btn btn-success btn-lg" %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div> 

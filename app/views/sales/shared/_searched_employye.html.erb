@@ -1,0 +1,30 @@
+<h4 class="text-primary"><span class="glyphicon glyphicon-tags"></span> Clientes</h4>
+<hr />
+<div class="table-responsive">
+
+  <h1> <%= @sale.employye_id %></h1>
+  <table class="table table-striped table-bordered table-hover">
+
+    <thead>
+      <tr>
+       <th>ID</th> 
+        <th>Nombre</th>
+        <th>asignamos </th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% unless @available_customers.blank? %>
+        <% for custo in  @available_employee %>
+            <td><%= custo.id %></td>
+             <td><%= custo.email %></td>
+
+            <td class="add_to_current_sale"><%= link_to url_for(:controller => 'sales', :action => 
+            'create_employee_association', :employye_id => custo.id, :sale_id => @sale.id), :remote => true do %><p><span class="glyphicon glyphicon-plus"></span></p><% end %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

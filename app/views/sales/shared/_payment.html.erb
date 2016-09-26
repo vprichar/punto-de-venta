@@ -1,0 +1,14 @@
+<div class="make_payment">
+	
+	<%= form_for :payments, :url => url_for(:controller => "payments", :action => "make_payment",:format => :js), :method => "get", :remote => true do |f| %>
+		<label>Tipo</label>
+		<%= f.select :payment_type, [['Efectivo', 'cash'], ['Tarjeta de Credito', 'credit_card'], ['Cheque', 'check'], ['Other', 'other']], {}, { :class => "form-control" } %>
+		<label>Cantidad</label>
+		<%= f.text_field :amount, :class => "form-control", :placeholder => "Cantidad", :value => @sale.remaining_balance %>
+		<%= f.hidden_field :sale_id, :value => @sale.id %>
+		<br />
+	  <% unless @sale.total_amount.blank? %>
+		<%= submit_tag "Pagar", :class => "btn btn-primary btn-lg" , :id => "pagamos" %>
+	  <% end %>
+	<% end %>
+</div>

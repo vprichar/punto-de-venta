@@ -1,0 +1,25 @@
+<table >
+   <thead>
+      <tr>
+         <th>Empleado</th>
+         <th>Ventas totales</th>
+      </tr>
+   </thead>
+   <tbody>
+      <%@empleados.each do |elemento|%>
+      <tr>
+         <%em = Employee.find_by(id:elemento[0])%>
+         <%if (em  == nil )%>
+         <td>Tienda </td>
+         <%else %>
+         <td><%= em.name %></td>
+         <%end %>
+         <td><%=elemento[1]%></td>
+      </tr>
+      <%end%>
+      <tr>
+         <td colspan=""></td>
+         <td class="table-danger"> Total : $<%=@total%></td>
+      </tr>
+   </tbody>
+</table>

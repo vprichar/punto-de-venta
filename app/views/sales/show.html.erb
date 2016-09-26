@@ -1,0 +1,173 @@
+<div class="card">
+<table class="bordered">
+        <thead>
+          <tr>
+              <th data-field="id">Código</th>
+              <th data-field="name">Artículo</th>
+              <th data-field="price"> Precio</th>
+              <th data-field="price"> Cantidad</th>
+              <th data-field="price"> Total</th>
+          </tr>
+        </thead>
+
+        <tbody>
+         <%items =  @sale.items%>
+      <% items = items.reorder('created_at  DESC')%>
+      <% items.each do |e| %>
+          <% @line_item = LineItem.where(:sale_id => @sale.id, :item_id => e.id).first %>
+            <%tem =Item.find_by(:id => e.id )%>
+            <% @tex = tem.item_name.to_s%>
+          <tr>
+            <td ><p> <%= e.sku  %></p>
+            </td>
+            <td ><p><%= @tex %> </p></bd>
+            <td ><p><%= @line_item.price%></p></td>
+            <td ><span class="chip"> <%=  @line_item.quantity %></span></td>
+            <td  >
+              <p>
+              <%= number_to_currency(@line_item.total_price) %>
+             </p>
+            </td>
+            
+          </tr>
+        <% end %>
+
+         <td></td>
+        <td></td>
+        <td></td>
+        <td>#<%= @sale.items.count %></td>
+        <td><a class="list-group-item list-group-item-info">Total <%= number_to_currency(@sale.amount) %></a></td>
+         
+        
+        </tbody>
+      </table>
+    </div>
+            
+
+ <div class="card">
+     <div>
+      <ul class="collection with-header">
+        <li class="collection-header"><h4> Datos de venta </h4></li>
+        <li class="collection-item"><div>Total: <%= number_to_currency(@sale.amount) %></div></li>
+        <li class="collection-item"><div>Cambio: <%= number_to_currency @sale.change_due %></div></li>
+        <li class="collection-item"><div>escuento:
+        <% unless @sale.discount.blank? %>
+        <%= number_to_currency(@sale.get_discounted_amount) %>
+         <% end %></div></li>
+           <li class="collection-item"><div>Empleado <% if ( @sale.employee != nil ) %>
+   
+            <%=@sale.employee .name %>
+         <% end %>  </div></li>
+        <li class="collection-item">cliente: <%= if ( @sale.customer== nil ) 
+            @sale.customer
+          else 
+            @sale.customer.first_name 
+          end %>  </a>
+         </div></li>
+        
+    
+       
+      </ul>
+   </div>
+  </div>
+          
+
+
+
+
+
+  
+
+
+ <div class="card">
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>Datos de pago </h4></li>
+        <% @sale.payments.each do |item| %>
+        <li class="collection-item">TIPO DE PAGO: <%=item.payment_type%></li>
+        <li class="collection-item">FECHA DE PAGO  <%=item.created_at.strftime("%d-%m-%Y")%></li>
+        <li class="collection-item">FECHA DE VENTA <%=  @sale.created_at.strftime("%d-%m-%Y")%></li>
+         <% end %>
+      </ul>
+</div>
+            
+
+
+          
+
+
+
+
+
+
+
+
+   
+
+
+<div id="mydiv">
+    <h2>_____Estilistasshop_____</h2>        
+ <pre>
+      paseo de san isidro
+Paseo Los Ganaderos (LasTorres) # 1787 Pte.
+Fracc. Lomas de San Isidro C.P: 80197, 
+Culiacán, Sinaloa
+R.F.C.AISJ681228-T68 CURP:AISJ68122MSLVNDO5
+Fecha: <%= @sale.created_at %>
+Folio: <%= @sale.id %>
+Cajero <%= current_user.username %>
+--------------------------------
+#Nombre  cantidad  scosto  Total
+<%= fields_for @sale do |f|%><%= f.fields_for :items do |e| %>
+<% @line_item = LineItem.where(:sale_id => @sale.id, :item_id => e.object.id).first %>
+<%= i = Item.find (@line_item.item_id) 
+i.name[0,9]
+%> ...<%= @line_item.quantity %>...<%= number_to_currency(@line_item.price) %>...<%= number_to_currency(@line_item.total_price) %>   
+             <% end %>
+              <% end %>                 
+--------------------------------
+                 <% if  @sale.discount != nil %>Descuento:<%= number_to_currency(@sale.get_discounted_amount) %><%end%>   
+                 Impuesto:<%= number_to_currency(@sale.tax) %>
+                 Total:<%= number_to_currency(@sale.total_amount) %>
+                 Cambio:<%= number_to_currency @sale.change_due %>  
+                 T.Productos <%= @sale.line_items.count%>  
+
+Estimado cliente por favor revise sus
+productos , salida de mercancía no se
+aceptan cambios ni devoluciones.en
+caso de existir defecto de fabrica,
+únicamente operara el cambio por
+algúnproducto de la misma marca
+en ningún momentose realizara la
+devolución de efectivo
+-------------------------------
+    <% unless @sale.employee.blank? %>
+   vendedora: <%= @sale.employee.name %> 
+    <% end %>
+     <% unless @sale.customer.blank? %>
+    Lo atendio: <%= @sale.customer.first_name%> 
+    <% end %>
+</div>
+
+<div>
+	</div>
+<div class="panel-body">
+ 	<input  onclick="printDiv('mydiv')" value="IMPRIMIR"  class = "btn waves-effect waves-light"/>
+ 	<% if @ultimo <= @sale.id %> 
+ 	 <%= link_to 'Antorior', sale_path(@sale.id-1) %> 
+     <% else %> 
+      <%= link_to 'Antorior', sale_path(@sale.id-1) , :class => "btn waves-effect waves-light" %> 
+       <%= link_to 'siguiente', sale_path(@sale.id+1),:class => "btn waves-effect waves-light" %> 
+     <% end  %> 
+     </pre>
+
+      </div>
+
+
+
+
+
+
+
+
+
+

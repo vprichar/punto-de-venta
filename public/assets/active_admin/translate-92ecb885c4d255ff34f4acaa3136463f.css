@@ -1,0 +1,91 @@
+/* line 5, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .activeadmin-translate .locales {
+  overflow: auto;
+  margin-right: 10px;
+}
+/* line 9, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .activeadmin-translate .locales li {
+  background-color: #efefef;
+  background-image: linear, 180deg, #efefef, #dfe1e2;
+  text-shadow: white 0 1px 0;
+  border: solid 1px #cdcdcd;
+  border-color: #d4d4d4;
+  border-top-color: #e6e6e6;
+  border-right-color: #d4d4d4;
+  border-bottom-color: #cdcdcd;
+  border-left-color: #d4d4d4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 0.5em;
+  color: #5e6469;
+  padding: 5px 10px 3px 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  float: right !important;
+}
+/* line 17, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .activeadmin-translate .locales li.ui-state-active {
+  background: white;
+}
+/* line 23, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .has_many_fields .activeadmin-translate .locales {
+  padding-top: 10px !important;
+}
+/* line 27, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .activeadmin-translate .locale {
+  clear: left;
+}
+/* line 31, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .activeadmin-translate .ui-tabs-hide {
+  display: none !important;
+}
+/* line 35, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .ui-tabs {
+  position: relative;
+  padding: .2em;
+  zoom: 1;
+}
+/* line 41, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .ui-tabs .ui-tabs-nav {
+  margin: 0;
+  padding: .2em .2em 0;
+}
+/* line 46, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .ui-tabs .ui-tabs-nav li {
+  list-style: none;
+  float: left;
+  position: relative;
+  top: 0;
+  margin: 1px .2em 0 0;
+  border-bottom: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+/* line 57, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .ui-tabs .ui-tabs-nav li a {
+  float: left;
+  padding: .5em 1em;
+  text-decoration: none;
+}
+/* line 63, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+  margin-bottom: -1px;
+  padding-bottom: 1px;
+}
+/* line 68, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .ui-tabs .ui-tabs-nav li.ui-tabs-active a, .active_admin .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .active_admin .ui-tabs .ui-tabs-nav li.ui-tabs-loading a {
+  cursor: text;
+}
+/* line 72, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .ui-tabs .ui-tabs-nav li a, .active_admin .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active a {
+  cursor: pointer;
+}
+/* line 76, /Users/ricardo/.rvm/gems/ruby-2.2.1/gems/activeadmin-translate-0.2.2/app/assets/stylesheets/active_admin/translate.css.scss */
+.active_admin .ui-tabs .ui-tabs-panel {
+  display: block;
+  border-width: 0;
+  padding: 1em 1.4em;
+  background: none;
+}

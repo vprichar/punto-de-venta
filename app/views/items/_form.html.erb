@@ -1,0 +1,70 @@
+<%= form_for(@item) do |f| %>
+  <%= render :partial => 'template/form_errors', :object => @item %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+
+   
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Marca</label>
+          <%= f.collection_select :item_category_id, ItemCategory.all, :id, :name, {prompt: "Selecciona una Marca"}, {class: "form-control"}  %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Código de Barras</label>
+          <%= f.text_field :sku, :class => "form-control", :placeholder => "Código de Barras" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Nombre</label>
+          <%= f.text_field :name, :class => "form-control", :placeholder => "Nombre" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Precio</label>
+          <%= f.text_field :price, :class => "form-control", :placeholder => "Precio" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>En Inventario</label>
+          <%= f.text_field :stock_amount, :class => "form-control", :placeholder => "En Inventario" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Costo</label>
+          <%= f.text_field :cost_price, :class => "form-control", :placeholder => "Costo" %>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Descripción</label>
+          <%= f.text_area :description, :class => "form-control", :placeholder => "Descripción" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= f.submit 'Agregar Articulo', :class => "btn btn-success btn-lg" %>
+  </div>
+</div>
+<% end %>

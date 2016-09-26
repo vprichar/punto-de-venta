@@ -1,0 +1,205 @@
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+<div class="row">
+
+  <div class="col-sm-6 col-md-4">
+     <div class="card">
+    <div class="thumbnail">
+      <div class="caption">
+       <div class = "titulo"><center> <h3>Empleado</h3></center> </div>
+       <center><h1><%= current_user.username %></h1></center>
+      </div>
+       </div>
+    </div>
+  </div>
+
+    <div class="col-sm-6 col-md-4">
+       <div class="card">
+    <div class="thumbnail">
+      <div class="caption">
+        <div class = "titulo"><center><h3>Total efectivo</h3></center></div>
+        <center><h1><%=  @total%> $</h1></center>  
+      </div>
+       </div>
+    </div>
+  </div>
+
+
+    <div class="col-sm-6 col-md-4">
+      <div class="card">
+    <div class="thumbnail">
+      <div class="caption">
+        <div class = "titulo"><center><h3>Numero de ventas</h3></center></div>
+           <center><h1><%= @numero %></h1></center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+     <div class="row">
+          <div class="card ">
+            <div class="card-content ">
+              <span class="card-title">Ventas de corte<i class="material-icons right">more_vert</i></span>
+                <div class="card">
+                <table class="striped" >
+                  <thead>
+                  <tr>
+                      <th>ID </th>
+                      <th>Total </th> 
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @articulos .each do |cash_out| %>
+                      <tr>
+                        <td><%= cash_out.id%></td>
+                        <td><%= number_to_currency cash_out.total_amount %></td>
+                        <td><%= number_to_currency  cash_out.paid_total %></td>             
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+            
+            </div>
+            <div class="card-action">
+              
+            </div>
+          </div>
+        </div>
+
+
+
+          <div class="row">
+          <div class="card ">
+            <div class="card-content ">
+              <span class="card-title">ventas por vendedores <i class="material-icons right">more_vert</i></span>
+                <div class="card">
+                   <table class="striped" >
+               <thead>
+                 <tr>
+       
+                   <th>Empleado</th>
+                   <th>Ventas totales</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 
+                 <tr>
+                
+                <td colspan=""></td>
+                <td class="table-danger"> Total : $<%=@total%></td>
+              </tr>
+            </tbody>
+          </table>
+
+                
+            </div>
+            <div class="card-action">
+              
+            </div>
+          </div>
+        </div>
+
+
+
+</i>
+  <!-- <div ng-app="myApp" ng-controller="customersCtrl" style=" display: none;"> 
+      <table>
+     
+        <tr ng-repeat="x in names | orderBy : 'id'">
+       <td>{{ x.id }}</td>
+       <td>{{ x.total_amount }}</td>
+       <td>{{ x.user_id }}</td>
+      
+
+     </tr>
+    </table>
+    
+</div>
+-->
+<div id="seleccion">
+
+<div id="render_me">
+
+  <pre style="display: none;">
+Corte de caja <Br>
+
+  Empleado: <%= current_user.username %> 
+  Fecha: 
+  -------ventas por vendedores----------
+   <%@empleados.each do |elemento|%>
+  <%em = Employee.find_by(id:elemento[0])%>
+  <%if (em  == nil )%>
+   Tienda  <%=elemento[1]%><%else %>   <%= em.name %> <%=elemento[1]%>
+       <%end %> 
+    
+    <%end%>
+   -----------entas de corte-------------
+   <% @articulos .each do |cash_out| %>
+   ID  <%= cash_out.id%>  Total<%= number_to_currency cash_out.total_amount %>  T <%= number_to_currency  cash_out.paid_total %>     
+    <% end %>
+  -----------corte----------
+  Total efectivo <%=  @total%>
+  Numero de ventas <%= @numero %>
+</pre>
+
+
+      
+  <form>
+  </div>
+
+
+<BR>
+<div id="seleccion">
+
+
+<div id="seleccion">Este texto es lo que se imprimirá cuando se pulse el enlace.
+   <pre style="display: none;">
+Corte de caja <Br>
+
+  Empleado: <%= current_user.username %> 
+  Fecha: 
+  -------ventas por vendedores----------
+   <%@empleados.each do |elemento|%>
+  <%em = Employee.find_by(id:elemento[0])%>
+  <%if (em  == nil )%>
+   Tienda  <%=elemento[1]%><%else %>   <%= em.name %> <%=elemento[1]%>
+       <%end %> 
+    
+    <%end%>
+   -----------entas de corte-------------
+   <% @articulos .each do |cash_out| %>
+   ID  <%= cash_out.id%>  Total<%= number_to_currency cash_out.total_amount %>  T <%= number_to_currency  cash_out.paid_total %>     
+    <% end %>
+  -----------corte----------
+  Total efectivo <%=  @total%>
+  Numero de ventas <%= @numero %>
+</pre>
+
+
+
+
+
+
+  <div id="seleccion">
+ 
+<a href="javascript:imprSelec('seleccion')" >Imprimir texto</a>
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
